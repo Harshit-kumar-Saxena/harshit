@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshit Kumar Saxena | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="menu-btn" id="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        
+        <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#education">Education</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#leadership">Leadership</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="home">
+            <div class="hero-text">
+                <p id="hero-greeting" style="margin:0; font-weight:600; color:var(--text-muted);"></p>
+                <h1><span id="hero-title-accent"></span> <span id="hero-title-main"></span></h1>
+                <p id="hero-description"></p>
+                
+                <div class="social-links">
+                    <a id="link-linkedin" href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a id="link-github" href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </div>
+
+                <div class="btn-group">
+                    <a id="link-email" href="#" class="btn btn-primary">Contact Me</a>
+                    <a id="link-resume" href="#" class="btn btn-secondary" download>Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img id="hero-image" src="" alt="Profile">
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="item">
+                <h3 id="edu-degree"></h3>
+                <span id="edu-institution" style="color: var(--text-muted); font-weight:600;"></span>
+                <p style="margin-top: 10px;">CGPA: <span id="edu-cgpa" style="font-weight: 600;"></span></p>
+                <p id="edu-duration" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;"></p>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div id="about-description" style="margin-bottom: 40px; line-height: 1.8;"></div>
+            
+            <div class="skills-grid" id="skills-container"></div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div id="experience-container"></div>
+        </section>
+
+        <section id="projects">
+            <h2>Major Projects</h2>
+            <div id="projects-container"></div>
+        </section>
+
+        <section id="leadership">
+            <h2>Leadership & Activities</h2>
+            <div id="leadership-container"></div>
+        </section>
+    </div>
+
+    <script>
+        // --- 1. DATA LOADING FUNCTION ---
+        async function loadPortfolioData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                // 1. Populate Hero
+                document.getElementById('hero-title-accent').innerText = data.hero.titleAccent;
+                document.getElementById('hero-description').innerText = data.hero.description;
+                document.getElementById('link-linkedin').href = data.hero.linkedin;
+                document.getElementById('link-github').href = data.hero.github;
+                document.getElementById('link-email').href = `mailto:${data.hero.email}`;
+                document.getElementById('link-resume').href = data.hero.resume;
+                document.getElementById('hero-image').src = data.hero.image;
+
+                // Populate Education
+                document.getElementById('edu-degree').innerText = data.education.degree;
+                document.getElementById('edu-institution').innerText = data.education.institution;
+                document.getElementById('edu-cgpa').innerText = data.education.cgpa;
+                document.getElementById('edu-duration').innerText = data.education.duration;
+
+                // 2. Populate About
+                document.getElementById('about-description').innerHTML = data.about.description;
+
+                // 3. Populate Skills (Upgraded with Multi-Color Themes)
+                const categoryThemes = {
+                    "Languages": { icon: "fa-solid fa-code", color: "#2563eb", bg: "rgba(37, 99, 235, 0.15)" }, // Blue
+                    "Robotics": { icon: "fa-solid fa-robot", color: "#ea580c", bg: "rgba(234, 88, 12, 0.15)" }, // Orange
+                    "Hardware": { icon: "fa-solid fa-microchip", color: "#059669", bg: "rgba(5, 150, 105, 0.15)" }, // Green
+                    "Tools": { icon: "fa-solid fa-screwdriver-wrench", color: "#db2777", bg: "rgba(219, 39, 119, 0.15)" } // Pink
+                };
+
+                const skillsHtml = data.skills.map(skill => {
+                    // Get the theme for this category, or use default purple
+                    const theme = categoryThemes[skill.category] || { icon: "fa-solid fa-star", color: "var(--accent)", bg: "rgba(123, 44, 191, 0.15)" };
+                    
+                    // Inject the dynamic colors directly into the tags
+                    const tags = skill.items.split(',').map(item => 
+                        `<span class="skill-tag" style="--tag-color: ${theme.color}; --tag-bg: ${theme.bg};">${item.trim()}</span>`
+                    ).join('');
+                    
+                    return `
+                    <div class="skill-category-card">
+                        <h3 class="skill-category-title" style="color: ${theme.color}; border-bottom-color: ${theme.bg};">
+                            <i class="${theme.icon}" style="margin-right: 12px; opacity: 0.9;"></i>${skill.category}
+                        </h3>
+                        <div class="skill-tags-container">
+                            ${tags}
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+                document.getElementById('skills-container').innerHTML = skillsHtml;
+
+                // 4. Populate Experience
+                const expHtml = data.experience.map(exp => `
+                    <div class="item">
+                        <h3>${exp.role}</h3>
+                        <span style="color: var(--text-muted); font-weight:600;">${exp.date}</span>
+                        <ul>${exp.tasks.map(task => `<li>${task}</li>`).join('')}</ul>
+                    </div>
+                `).join('');
+                document.getElementById('experience-container').innerHTML = expHtml;
+
+                // 5. Populate Projects (Clickable Cards)
+                const projHtml = data.projects.map(proj => `
+                    <a href="${proj.link}" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-item project-card-hover">
+                            <div class="project-media">
+                                <img src="${proj.media}" alt="${proj.title} Media" onerror="this.src='https://via.placeholder.com/400x250?text=Project+Image'">
+                            </div>
+                            <div class="project-content">
+                                <h3>${proj.title}</h3>
+                                <p>${proj.description}</p>
+                            </div>
+                        </div>
+                    </a>
+                `).join('');
+                document.getElementById('projects-container').innerHTML = projHtml;
+
+                // 6. Populate Leadership
+                const leadHtml = data.leadership.map(item => `
+                    <div class="item">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `).join('');
+                document.getElementById('leadership-container').innerHTML = leadHtml;
+
+            } catch (error) {
+                console.error('Error loading data.json:', error);
+            }
+        }
+
+        function initializeAnimations() {
+            // A. Typewriter Effect for Hero Title
+            const titleElement = document.getElementById('hero-title-accent');
+            const text = titleElement.innerText; // Get the text that was just loaded from JSON
+            titleElement.innerText = '';         // Clear it out to prepare for typing
+            titleElement.classList.add('typewriter'); // Add the blinking cursor CSS class
+            
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    titleElement.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50); // Speed of typing (50ms per letter)
+                } else {
+                    // Optional: remove blinking cursor 3 seconds after typing finishes
+                    setTimeout(() => titleElement.classList.remove('typewriter'), 3000); 
+                }
+            }
+            // Wait slightly before starting the typing effect
+            setTimeout(type, 600); 
+
+            // B. Scroll Reveal Observer (Fades sections in as you scroll down)
+            const sections = document.querySelectorAll('section');
+            
+            // Hide all sections initially
+            sections.forEach(sec => sec.classList.add('reveal'));
+
+            // Watch for sections to enter the viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active'); // Trigger the fade-up animation
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, { threshold: 0.15 }); // Triggers when 15% of the section is visible
+
+            sections.forEach(sec => observer.observe(sec));
+        }
+
+        // --- 3. EXECUTE EVERYTHING ON LOAD ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            // First, wait for all the data to be fetched and injected into the HTML
+            await loadPortfolioData(); 
+            // Second, apply the typewriter and scroll animations to that newly loaded data
+            initializeAnimations();    
+            
+            // --- NEW: HAMBURGER MENU LOGIC ---
+            const menuBtn = document.getElementById('menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            const menuIcon = menuBtn.querySelector('i');
+
+            // Toggle menu when clicking the hamburger
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                // Switch icon between bars and an 'X'
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.replace('fa-bars', 'fa-xmark');
+                } else {
+                    menuIcon.classList.replace('fa-xmark', 'fa-bars');
+                }
+            });
+
+            // Close the menu automatically when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuIcon.classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

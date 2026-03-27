@@ -1,0 +1,71 @@
+{
+  "hero": {
+    "greeting": "Hey, I'm Harshi 👋",
+    "titleAccent": "Hey, I'm Harshit saxena",
+    "titleMain": "Engineer",
+    "description": "a robotics software developer focused on autonomous systems, mobile robotics, and robotic arm control. I have hands-on experience with ROS2 navigation, SLAM, IoT systems, and computer vision, including training models like YOLOv4-Tiny, YOLOv8-Nano, and FastSCNN.",
+    "linkedin": "https://www.linkedin.com/in/harshit-kumar-saxena/",
+    "github": "https://github.com/Harshit-kumar-Saxena",
+    "email": "saxena150723@gmail.com",
+    "resume": "assests/harshit_resume.pdf",
+    "image": "assests/my_photo.jpeg"
+  },
+
+  "education": {
+    "institution": "Indian Institute of Information Technology, Design and Manufacturing, Jabalpur (IIITDMJ)",
+    "degree": "B.Tech in Smart Manufacturing",
+    "duration": "2023 - 2027",
+    "cgpa": "8.4"
+  },
+
+  "about": {
+    "description": "I am a pre-final year Mechanical Engineering student at the Indian Institute of Information Technology, Jabalpur, with a strong focus on robotics and autonomous systems. My work spans across software and hardware, combining programming, CAD design, and embedded systems to build intelligent robotic solutions.<br><br>I have hands-on experience in developing ROS2-based systems for navigation, SLAM, and robotic manipulation, along with implementing computer vision pipelines for perception tasks such as detection and segmentation. I also work with IoT and edge devices to deploy real-time robotic applications.<br><br>During my internship at Vaayu Robotics, I worked on processing and managing large-scale drone data, where I built automated pipelines to handle and optimize high-resolution imagery for real-world inspection systems, gaining practical exposure to cloud-based data workflows and scalable systems."
+  },
+  
+  "skills": [
+    { "category": "Languages", "items": "C++, Python" },
+    { "category": "Robotics", "items": "ROS2, Gazebo, Rviz2, MoveIt2" },
+    { "category": "Hardware", "items": "Jetson AGX Xavier, ESP32, Raspberry Pi, Arduino" },
+    { "category": "Tools", "items": "Fusion 360, SolidWorks, KiCad, Git, MATLAB" }
+  ],
+  "experience": [
+    {
+      "role": "VAAYU ROBOTICS -Remote Intern",
+      "date": "August 2025 - September 2025",
+      "tasks": [
+        "Developed and implemented a classification algorithm to process approximately 15 GB of raw, shuffled drone imagery, automatically identifying and sorting scrambled photos into distinct, tower-specific folders.",
+        "Engineered this automated data pipeline to handle thousands of incoming images, significantly reducing manual sorting efforts and optimizing the dataset quality for critical infrastructure inspection models."
+      ]
+    }
+  ],
+  "projects": [
+      {
+        "title": "AMR with LiDAR",
+        "description": "Deployed a ROS2-based SLAM and navigation stack on a differential-drive AMR using 2D LiDAR for real-time mapping.",
+        "media": "assests/images/amr2.png",
+        "link": "project-amr.html"
+      },
+      {
+        "title": "VLA Robotic Arm",
+        "description": "Built a ROS2 + MoveIt2 manipulation pipeline for a 5-DOF arm using a local LLaMA 3B model for natural language commands.",
+        "media": "assests/images/vla1.png",
+        "link": "project-vla.html"
+      },
+      {
+        "title": "Crack Detection Bot",
+        "description": "Developed an in-pipe inspection robot with a custom YOLOv4-Tiny model reaching 30 FPS; filed a patent for the modular design.",
+        "media": "assests/images/crack1.jpeg",
+        "link": "project-crack.html"
+      }
+    ],
+  "leadership": [
+    {
+      "title": "Co-coordinator | Electronics and Robotics Society (ERS)",
+      "description": "Organized 20+ technical workshops and mentored 180+ students in robotics and computer vision."
+    },
+    {
+      "title": "Achievements",
+      "description": "• e-Yantra (IIT Bombay): Ranked Top-16 nationwide in the KrishCobot theme.<br>• Vishwakarma Awards: Semi-finalist (Top 40/1012 teams) for VLA-based pick-and-place robot.<br>• DD Robocon 2025 (IIT Delhi): Qualified Stage 1.<br>• e-Toycathon (C-DAC): National Finalist (among top 112 teams)."
+    }
+  ]
+}

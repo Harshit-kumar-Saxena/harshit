@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMR with LiDAR | Harshit Saxena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            opacity: 0.8;
+            transform: translateX(-5px);
+        }
+        
+        .project-hero-media {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin: 20px 0 40px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+            border: 1px solid #eee;
+        }
+
+        .project-header {
+            margin-bottom: 20px;
+        }
+
+        .project-date {
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .tech-tag {
+            background: var(--text-dark);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .detail-section {
+            margin-bottom: 40px;
+        }
+
+        .detail-section h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .detail-section p, .detail-section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .detail-section ul {
+            padding-left: 20px;
+        }
+
+        .detail-section li {
+            margin-bottom: 15px;
+        }
+
+        .github-action {
+            margin-top: 60px;
+            text-align: center;
+            border-top: 2px solid #f0f0f0;
+            padding-top: 50px;
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#projects">Back to Projects</a>
+    </nav>
+
+    <div class="container">
+        <section style="padding: 60px 80px;">
+            <a href="index.html#projects" class="back-link"><i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Back to Portfolio</a>
+            
+            <div class="project-header">
+                <span class="project-date">April 2025 – June 2025</span>
+                <h1 style="font-size: 3.5rem; margin-top: 0;">AMR with LiDAR for Dynamic Obstacle Avoidance</h1>
+            </div>
+            
+            <video class="project-hero-media" controls autoplay loop muted poster="assests/my_photo.jpeg">
+                <source src="assests/videos/amr_final.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="tech-tags">
+                <span class="tech-tag">ROS2</span>
+                <span class="tech-tag">2D LiDAR</span>
+                <span class="tech-tag">SLAM-Toolbox</span>
+                <span class="tech-tag">AMCL</span>
+                <span class="tech-tag">Differential-Drive</span>
+            </div>
+
+            <div class="detail-section">
+                <h3>Project Overview</h3>
+                <p>Designed and deployed a ROS2-based SLAM and navigation stack on a differential-drive Autonomous Mobile Robot (AMR). By utilizing a 2D LiDAR sensor, the robot achieves real-time mapping, accurate localization, and dynamic obstacle avoidance in complex indoor environments.</p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Key Implementation Details</h3>
+                <ul>
+                    <li><strong>Real-Time Map Generation:</strong> Utilized <strong>SLAM-Toolbox</strong> to process sensor data and generate high-fidelity occupancy grid maps of unknown indoor environments.</li>
+                    <li><strong>Robust Localization:</strong> Integrated <strong>AMCL (Adaptive Monte Carlo Localization)</strong> on the generated maps to ensure high-precision positional tracking. This significantly improved navigation stability in dynamic and changing settings.</li>
+                    <li><strong>Dynamic Navigation:</strong> Configured the ROS2 navigation stack to continuously process LiDAR data, enabling the AMR to dynamically recalculate trajectories and avoid moving obstacles in real-time.</li>
+                </ul>
+            </div>
+
+            <div class="github-action">
+                <h3 style="margin-bottom: 30px;">Review the Code Architecture</h3>
+                <a href="https://github.com/Harshit-kumar-Saxena/AMR" target="_blank" class="btn btn-primary btn-large">
+                    <i class="fa-brands fa-github" style="margin-right: 10px;"></i> View Repository on GitHub
+                </a>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
