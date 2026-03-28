@@ -1,192 +1,218 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Poppins:wght@600;700;800&display=swap');
 
 :root {
-    --bg-purple: linear-gradient(135deg,#3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
-    --accent: #7b2cbf;
-    --text-dark: #1a1a1a;
-    --text-muted: #555;
-    --card-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    /* NEW MINIMALIST PALETTE */
+    --primary: #222222;     /* Deep Charcoal */
+    --secondary: #7B7B7B;   /* Medium Gray */
+    --tertiary: #F8F8F8;    /* Off-White */
+    --white: #FFFFFF;       /* Pure White */
+    
+    --accent: #222222;      /* Accent is now sharp charcoal */
+    --text-dark: #222222;
+    --text-muted: #7B7B7B;
+    --card-shadow: 0 10px 30px rgba(34, 34, 34, 0.05);
 }
 
 html { scroll-behavior: smooth; }
 
+
 body {
     margin: 0;
     font-family: 'IBM Plex Mono', monospace; 
-    background: 
-        linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-        var(--bg-purple);
-    background-size: 40px 40px, 40px 40px, 100% 100%;
-    animation: grid-scroll 20s linear infinite;
+    background-color: var(--tertiary);
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-@keyframes grid-scroll {
-    0% { background-position: 0 0, 0 0, 0 0; }
-    100% { background-position: 40px 40px, 40px 40px, 0 0; }
+/* Simulates wheeled robot driving forward over a grid */
+@keyframes forward-drive {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 40px; } 
 }
 
-/* Heading Font */
 h1, h2, h3, h4, nav a {
     font-family: 'Poppins', sans-serif;
 }
 
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-sizing: border-box; /* THIS IS THE MAGIC FIX */
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.nav-links {
-    display: flex; /* THIS WAS 'hidden', CHANGE TO 'flex' */
-    gap: 25px;
-}
-
-.menu-btn {
-    display: none; /* THIS WAS 'hidden', CHANGE TO 'none' */
-    position: relative;
-    z-index: 2000;
-    font-size: 1.8rem;
-    color: #1a1a1a;
-    padding: 5px;
-    cursor: pointer;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-size: 0.95rem;
-    transition: 0.3s;
-}
-
-nav a:hover { color: var(--accent); }
 
 .container {
-    max-width: 1280px;
-    margin: 100px auto 50px;
+    max-width: 1280px; /* Tighter width looks more elegant */
+    margin: 20px auto 8px;
     padding: 0 20px;
     position: relative;
     z-index: 10; 
 }
 
 section {
-    background: white;
-    border-radius: 24px;
+    background: var(--white);
+    border-radius: 16px; /* Slightly sharper corners */
     padding: 50px;
     margin-bottom: 40px;
     box-shadow: var(--card-shadow);
+    border: 1px solid #EBEBEB;
 }
 
-/* Hero */
+/* --- HERO --- */
 #home { display: flex; align-items: center; gap: 40px; }
 .hero-text { flex: 1; }
-.hero-img { flex: 0 0 300px; }
-.hero-img img { width: 100%; height: 300px; border-radius: 50%; object-fit: cover; border: 8px solid #f8f9fa; }
+.hero-img { flex: 0 0 280px; }
+.hero-img img { 
+    width: 100%; 
+    height: 280px; 
+    border-radius: 10%; 
+    object-fit: cover; 
+    border: 2px solid #EBEBEB; 
+    box-shadow: 0 10px 20px rgba(34, 34, 34, 0.05);
+}
 
-h1 { font-size: 3rem; margin: 10px 0; line-height: 1.1; }
-h1 span { color: var(--accent); }
+h1 { font-size: 3.2rem; margin: 10px 0; line-height: 1.1; letter-spacing: -1px; }
+h1 span { color: var(--primary); }
 
 .social-links { margin: 20px 0; display: flex; gap: 20px; font-size: 1.5rem; }
-.social-links a { color: var(--text-dark); transition: 0.3s; }
-.social-links a:hover { color: var(--accent); transform: translateY(-3px); }
+.social-links a { color: var(--secondary); transition: 0.3s; }
+.social-links a:hover { color: var(--primary); transform: translateY(-3px); }
 
 .btn-group { display: flex; gap: 15px; margin-top: 25px; }
 .btn {
     padding: 12px 28px;
-    border-radius: 10px;
+    border-radius: 8px; /* Sharper buttons */
     text-decoration: none;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    transition: 0.3s;
+    transition: all 0.3s;
 }
-.btn-primary { background: var(--text-dark); color: white; }
-.btn-secondary { border: 2px solid var(--text-dark); color: var(--text-dark); }
-.btn:hover { opacity: 0.8; transform: translateY(-2px); }
+.btn-primary { 
+    background: var(--primary); 
+    color: var(--white); 
+    border: 1px solid var(--primary);
+}
+.btn-primary:hover {
+    background: var(--white);
+    color: var(--primary);
+}
+.btn-secondary { 
+    background: var(--tertiary);
+    border: 1px solid var(--secondary); 
+    color: var(--primary); 
+}
+.btn-secondary:hover { 
+    border-color: var(--primary); 
+    background: var(--white);
+}
 
-h2 { color: var(--accent); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 30px; }
+h2 { 
+    color: var(--primary); 
+    border-bottom: 1px solid #EBEBEB; 
+    padding-bottom: 15px; 
+    margin-bottom: 30px; 
+    letter-spacing: -0.5px;
+}
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+/* --- DATE BADGE --- */
+.date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--tertiary);
+    color: var(--primary); 
+    border: 1px solid #EBEBEB;
+    padding: 6px 14px;
+    border-radius: 6px; /* Tech pill */
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 15px;
+    font-family: 'IBM Plex Mono', monospace;
+}
 
-/* NEW: Project Layout (Media Left, Content Right) */
+/* --- PROJECTS --- */
 .project-item {
     display: flex;
     gap: 30px;
     align-items: center;
-    border: 1px solid #eee;
+    border: 1px solid #EBEBEB;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 12px;
     margin-bottom: 20px;
-}
-/* Hover effect for clickable project cards */
-.project-card-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    background: var(--white);
 }
 
-.project-card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    border-color: var(--accent);
+/* High Contrast Minimalist Glow */
+.project-card-hover {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
-.project-media {
-    flex: 0 0 40%; /* Takes up 40% of the width */
+.project-card-hover:hover, .skill-category-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 20px 40px rgba(34, 34, 34, 0.1), 0 0 10px rgba(34, 34, 34, 0.02);
+    border: 2px solid #000000; /* Sharp black border on hover */
+    
 }
+
+.project-media { flex: 0 0 40%; }
 .project-media img, .project-media video {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     object-fit: cover;
+    border: 1px solid #EBEBEB;
 }
-.project-content {
-    flex: 1; /* Takes up remaining width */
+.project-content { flex: 1; }
+.project-content h3 { margin-top: 0; color: var(--primary); }
+
+/* --- SKILLS SECTION (Clean Rows) --- */
+.skills-grid { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0px; 
+    margin-top: 30px;
 }
-.project-content h3 { margin-top: 0; }
+
 .skill-category-card {
-    background: #fdfdfd;
-    border: 1px solid #f0f0f0;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #EBEBEB;
+    padding: 25px 10px;
+    border-radius: 0;
+    transition: all 0.3s ease;
 }
 
 .skill-category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    border-color: var(--accent);
+    transform: translateX(8px) !important; 
+    box-shadow: none !important;
+    border-color: transparent !important;
+    border-bottom: 1px solid var(--primary) !important;
+    background-color: var(--tertiary) !important; 
 }
 
 .skill-category-title {
-    color: var(--accent);
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+    flex: 0 0 200px; 
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.15rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
 }
+.skill-category-title i { color: var(--secondary); }
 
 .skill-tags-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    flex: 1;
+    justify-content: flex-start; 
 }
 
+/* Minimalist Skill Tags */
 .skill-tag {
-    /* Uses dynamic variables assigned in JS, defaults to purple if missing */
-    background: var(--tag-bg, rgba(123, 44, 191, 0.08)); 
-    color: var(--tag-color, var(--accent)); 
-    border: 1px solid var(--tag-bg, rgba(123, 44, 191, 0.2));
-    padding: 8px 18px;
-    border-radius: 50px;
+    background: var(--white); 
+    color: var(--primary); 
+    border: 1px solid #D0D0D0;
+    padding: 6px 16px;
+    border-radius: 6px; /* Boxy tech aesthetic */
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.85rem;
     font-weight: 600;
@@ -196,159 +222,71 @@ h2 { color: var(--accent); border-bottom: 2px solid #f0f0f0; padding-bottom: 10p
 }
 
 .skill-tag:hover {
-    /* Fills with solid dynamic color on hover */
-    background: var(--tag-color, var(--accent));
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px var(--tag-bg, rgba(123, 44, 191, 0.25));
-    border-color: var(--tag-color, var(--accent));
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 5px 15px rgba(34, 34, 34, 0.15);
 }
 
-/* Keep the existing icon style for the robotic arm only */
-.floating-bg-icon {
-    position: fixed;
-    /* Changed to a dark semi-transparent color instead of white */
-    color: rgba(0, 0, 0, 0.08); 
-    font-size: 28rem;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Base style for background IMAGE asset containers */
-.floating-bg-asset {
-    position: fixed;
-    z-index: 1; /* FIX: Changed from -1 to 1 */
-    pointer-events: none; /* Non-interactive */
-}
-
-/* Positioning for the Robotic Arm Icon (Top Right) */
-.bg-robot-arm {
-    top: 15%;
-    right: 5%;
-    transform: rotate(-30deg);
-    animation: float-arm 10s ease-in-out infinite;
-}
-
-/* --- MOBILE & TABLET OPTIMIZATIONS --- */
-@media (max-width: 768px) {
-    .floating-bg-icon { font-size: 15rem; opacity: 0.03; }
-    .bg-robot-arm { top: 10%; right: -5%; }
-    
-    /* Make the mobile bot smaller but still prominent on phones */
-    .bg-mobile-bot img {
-        width: 60vw;
-        opacity: 0.15;
-    }
-    .bg-mobile-bot { bottom: 0; left: -10%; }
-}
-
-
-/* --- NEW: SCROLL REVEAL ANIMATIONS --- */
+/* --- ANIMATIONS --- */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
-
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* --- NEW: TYPEWRITER CURSOR --- */
 .typewriter {
-    border-right: 4px solid var(--accent);
+    border-right: 4px solid var(--primary);
     padding-right: 5px;
     animation: blink 0.8s step-end infinite;
 }
-
 @keyframes blink {
     0%, 100% { border-color: transparent; }
-    50% { border-color: var(--accent); }
+    50% { border-color: var(--primary); }
 }
 
-/* --- ENHANCED: ROBOTICS GLOW ON HOVER --- */
-.project-card-hover:hover, .skill-category-card:hover {
-    transform: translateY(-5px);
-    /* Adds a "Neon Tech" glow to cards when hovered */
-    box-shadow: 0 15px 30px rgba(123, 44, 191, 0.2), 0 0 15px rgba(123, 44, 191, 0.1);
-    border-color: var(--accent);
-}
-
-/* ========================================================= */
-/* --- ALL MOBILE & TABLET OPTIMIZATIONS (SCREENS < 768px) - */
-/* ========================================================= */
+/* --- MOBILE --- */
 @media (max-width: 768px) {
-    
-    /* 1. Fix Background Icons */
-    .floating-bg-icon { font-size: 15rem; opacity: 0.03; }
-    .bg-robot-arm { top: 10%; right: -5%; }
+    nav { justify-content: flex-end; padding: 15px; }
+    .menu-btn { display: block; }
+    section { padding: 30px 20px; }
+    #home { flex-direction: column-reverse; text-align: left; gap: 20px; }
+    .hero-img { flex: 0 0 auto; }
+    .hero-img img { width: 220px; height: 220px; margin: 0 auto; }
+    .social-links, .btn-group { justify-content: center; flex-wrap: wrap; }
+    .project-item { flex-direction: column; text-align: left; }
+    .project-media { width: 100%; }
+    .skill-category-card { flex-direction: column; align-items: flex-start; gap: 15px; padding: 20px 10px; }
+    .skill-category-title { flex: 0 0 auto; }
+}
 
-    nav {
-        justify-content: flex-end;
-        padding: 15px 15px;
-    }
-    .menu-btn {
-        display: block; /* THIS WAS 'hidden', CHANGE TO 'block' */
-        position: relative;
-        z-index: 2000; /* THIS WAS 0, CHANGE TO 2000 */
-    }
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.80);
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out;
-    }
-    .nav-links.active { max-height: 400px; }
-    .nav-links a {
-        padding: 15px 0;
-        width: 100%;
-        text-align: center;
-        border-top: 1px solid #f0f0f0;
-        font-size: 1.1rem;
-    }
+/* --- INTERACTIVE INDIVIDUAL CELL GRID --- */
+.interactive-grid {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow: hidden;
+}
 
-    /* 3. Fix Hero Section Squishing */
-    section {
-        padding: 30px 20px; /* Reduces massive desktop padding for phones */
-    }
-    #home {
-        flex-direction: column-reverse; /* Stacks elements: Image on top, Text on bottom */
-        text-align: center;
-        gap: 20px;
-    }
-    .hero-img { 
-        flex: 0 0 auto; 
-    }
-    .hero-img img {
-        width: 200px; /* Shrinks the giant 300px image to fit phones */
-        height: 200px;
-        border-width: 4px;
-        margin: 0 auto; /* Centers the image */
-    }
-    .social-links {
-        justify-content: center; /* Centers the LinkedIn/GitHub icons */
-    }
-    .btn-group {
-        justify-content: center; /* Centers the buttons */
-        flex-wrap: wrap; /* Allows buttons to stack if the screen is super tiny */
-    }
+.grid-cell {
+    width: 40px; /* Exact size of your original grid */
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid rgba(34, 34, 34, 0.04); /* Subtle grid lines */
     
-    /* 4. Fix Project Cards Squishing */
-    .project-item {
-        flex-direction: column; /* Stacks the project video on top of the text */
-        text-align: center;
-    }
-    .project-media { 
-        flex: 0 0 auto; 
-        width: 100%; 
-    }
+    /* The slow fade out (1.5 seconds) after the 2-second timeout ends */
+    transition: background-color 1.5s ease; 
+}
+
+/* The state when the mouse touches the cell */
+.grid-cell.active {
+    background-color: var(--primary); /* Deep Charcoal fill */
+    transition: background-color 0s; /* Instant fill on hover */
 }

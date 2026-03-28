@@ -1,14 +1,14 @@
 {
   "hero": {
-    "greeting": "Hey, I'm Harshi 👋",
-    "titleAccent": "Hey, I'm Harshit saxena",
+    "greeting": "Hey, I'm",
+    "titleAccent": "Harshit Saxena",
     "titleMain": "Engineer",
-    "description": "a robotics software developer focused on autonomous systems, mobile robotics, and robotic arm control. I have hands-on experience with ROS2 navigation, SLAM, IoT systems, and computer vision, including training models like YOLOv4-Tiny, YOLOv8-Nano, and FastSCNN.",
+    "description": "Robotics Software Developer focused on autonomous systems, mobile robotics, and Robotic Arm Control. I have hands-on experience with ROS2 navigation, SLAM, IoT systems, and computer vision, including training models like YOLOv4-Tiny, YOLOv8-Nano, and FastSCNN.",
     "linkedin": "https://www.linkedin.com/in/harshit-kumar-saxena/",
     "github": "https://github.com/Harshit-kumar-Saxena",
     "email": "saxena150723@gmail.com",
     "resume": "assests/harshit_resume.pdf",
-    "image": "assests/my_photo.jpeg"
+    "image": "assests/image.png"
   },
 
   "education": {
@@ -19,7 +19,7 @@
   },
 
   "about": {
-    "description": "I am a pre-final year Mechanical Engineering student at the Indian Institute of Information Technology, Jabalpur, with a strong focus on robotics and autonomous systems. My work spans across software and hardware, combining programming, CAD design, and embedded systems to build intelligent robotic solutions.<br><br>I have hands-on experience in developing ROS2-based systems for navigation, SLAM, and robotic manipulation, along with implementing computer vision pipelines for perception tasks such as detection and segmentation. I also work with IoT and edge devices to deploy real-time robotic applications.<br><br>During my internship at Vaayu Robotics, I worked on processing and managing large-scale drone data, where I built automated pipelines to handle and optimize high-resolution imagery for real-world inspection systems, gaining practical exposure to cloud-based data workflows and scalable systems."
+    "description": "I am a pre-final year Mechanical Engineering student at IIITDM Jabalpur, specializing in robotics software and autonomous systems. My core strength lies in bridging the gap between physical hardware and intelligent software to build end-to-end robotic solutions.<br><br>I specialize in developing ROS2-based architectures for SLAM, navigation, and robotic manipulation. I frequently integrate custom computer vision pipelines and deploy them on edge computing devices to enable real-time perception and decision-making in the real world.<br><br>Most recently, during my internship at Vaayu Robotics, I built automated, scalable data pipelines to process massive datasets of high-resolution drone imagery, optimizing complex workflows for infrastructure inspection."
   },
   
   "skills": [

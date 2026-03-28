@@ -8,25 +8,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <div class="menu-btn" id="menu-btn">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-        
-        <div class="nav-links" id="nav-links">
-            <a href="#home">Home</a>
-            <a href="#education">Education</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#leadership">Leadership</a>
-        </div>
-    </nav>
+    <body>
+    <div id="interactive-grid" class="interactive-grid"></div>
+
 
     <div class="container">
         <section id="home">
             <div class="hero-text">
-                <p id="hero-greeting" style="margin:0; font-weight:600; color:var(--text-muted);"></p>
+                <p id="hero-greeting" style="margin:0; font-weight:600; color:var(--text-muted);font-size: 1rem;"></p>
                 <h1><span id="hero-title-accent"></span> <span id="hero-title-main"></span></h1>
                 <p id="hero-description"></p>
                 
@@ -47,11 +36,35 @@
 
         <section id="education">
             <h2>Education</h2>
-            <div class="item">
-                <h3 id="edu-degree"></h3>
-                <span id="edu-institution" style="color: var(--text-muted); font-weight:600;"></span>
-                <p style="margin-top: 10px;">CGPA: <span id="edu-cgpa" style="font-weight: 600;"></span></p>
-                <p id="edu-duration" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;"></p>
+            
+            <div class="project-item project-card-hover" style="display: block; padding: 30px; background: #fdfdfd;">
+                
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 1.4rem;">
+                            <i class="fa-solid fa-graduation-cap" style="color: var(--accent); margin-right: 12px;"></i><span id="edu-degree"></span>
+                        </h3>
+                        
+                        <div style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-weight: 600; font-size: 1.05rem; line-height: 1.4;">
+                            <img src="assests/images/logo.png" alt="IIITDMJ Logo" style="height: 36px; width: 36px; object-fit: contain; border-radius: 6px;">
+                            <span id="edu-institution"></span>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="date-badge" style="margin-top: 0;">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span id="edu-duration"></span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; background: #F8F8F8; color: #222222; padding: 6px 16px; border-radius: 6px; font-weight: 700; font-family: 'IBM Plex Mono', monospace; border: 1px solid #222222;">
+                        <i class="fa-solid fa-award"></i>
+                        CGPA: <span id="edu-cgpa"></span>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
@@ -86,6 +99,7 @@
                 const data = await response.json();
 
                 // 1. Populate Hero
+                document.getElementById('hero-greeting').innerText = data.hero.greeting;
                 document.getElementById('hero-title-accent').innerText = data.hero.titleAccent;
                 document.getElementById('hero-description').innerText = data.hero.description;
                 document.getElementById('link-linkedin').href = data.hero.linkedin;
@@ -103,27 +117,26 @@
                 // 2. Populate About
                 document.getElementById('about-description').innerHTML = data.about.description;
 
-                // 3. Populate Skills (Upgraded with Multi-Color Themes)
+               // 3. Populate Skills (Minimalist Monochrome Theme)
                 const categoryThemes = {
-                    "Languages": { icon: "fa-solid fa-code", color: "#2563eb", bg: "rgba(37, 99, 235, 0.15)" }, // Blue
-                    "Robotics": { icon: "fa-solid fa-robot", color: "#ea580c", bg: "rgba(234, 88, 12, 0.15)" }, // Orange
-                    "Hardware": { icon: "fa-solid fa-microchip", color: "#059669", bg: "rgba(5, 150, 105, 0.15)" }, // Green
-                    "Tools": { icon: "fa-solid fa-screwdriver-wrench", color: "#db2777", bg: "rgba(219, 39, 119, 0.15)" } // Pink
+                    "Languages": { icon: "fa-solid fa-code" },
+                    "Robotics": { icon: "fa-solid fa-robot" },
+                    "Hardware": { icon: "fa-solid fa-microchip" },
+                    "Tools": { icon: "fa-solid fa-screwdriver-wrench" }
                 };
 
                 const skillsHtml = data.skills.map(skill => {
-                    // Get the theme for this category, or use default purple
-                    const theme = categoryThemes[skill.category] || { icon: "fa-solid fa-star", color: "var(--accent)", bg: "rgba(123, 44, 191, 0.15)" };
+                    const theme = categoryThemes[skill.category] || { icon: "fa-solid fa-star" };
                     
-                    // Inject the dynamic colors directly into the tags
+                    // Tags are now styled purely by CSS, so we just inject the raw HTML
                     const tags = skill.items.split(',').map(item => 
-                        `<span class="skill-tag" style="--tag-color: ${theme.color}; --tag-bg: ${theme.bg};">${item.trim()}</span>`
+                        `<span class="skill-tag">${item.trim()}</span>`
                     ).join('');
                     
                     return `
                     <div class="skill-category-card">
-                        <h3 class="skill-category-title" style="color: ${theme.color}; border-bottom-color: ${theme.bg};">
-                            <i class="${theme.icon}" style="margin-right: 12px; opacity: 0.9;"></i>${skill.category}
+                        <h3 class="skill-category-title">
+                            <i class="${theme.icon}" style="margin-right: 12px;"></i>${skill.category}
                         </h3>
                         <div class="skill-tags-container">
                             ${tags}
@@ -243,6 +256,58 @@
                     menuIcon.classList.replace('fa-xmark', 'fa-bars');
                 });
             });
+        });
+       // --- UPGRADED: FULL-PAGE INDIVIDUAL CELL TRACKING GRID ---
+        const gridContainer = document.getElementById('interactive-grid');
+        const cellSize = 40; // Must match your CSS width/height
+        let columns = 0;
+        let rows = 0;
+
+        function createInteractiveGrid() {
+            gridContainer.innerHTML = '';
+            
+            // Calculate exact number of columns and rows (+1 to safely cover the edges)
+            columns = Math.floor(window.innerWidth / cellSize) + 1;
+            rows = Math.floor(window.innerHeight / cellSize) + 1;
+            
+            // THE FIX: Force the container to perfectly fit the calculated columns 
+            // so the browser's flex-wrap doesn't break the tracking math
+            gridContainer.style.width = `${columns * cellSize}px`;
+            gridContainer.style.height = `${rows * cellSize}px`;
+
+            const totalCells = columns * rows;
+
+            // Generate the empty cells
+            for (let i = 0; i < totalCells; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('grid-cell');
+                gridContainer.appendChild(cell);
+            }
+        }
+
+        // Initialize grid on load and handle screen resizing
+        createInteractiveGrid();
+        window.addEventListener('resize', createInteractiveGrid);
+
+        // THE FIX: Global mouse tracking (Bypasses z-index blocking)
+        document.addEventListener('mousemove', (e) => {
+            // Calculate which column and row the mouse is currently over
+            const col = Math.floor(e.clientX / cellSize);
+            const row = Math.floor(e.clientY / cellSize);
+            
+            // Convert the row/col into the specific index of the cell array
+            const targetIndex = (row * columns) + col;
+            const targetCell = gridContainer.children[targetIndex];
+
+            // If the cell exists, light it up
+            if (targetCell) {
+                targetCell.classList.add('active');
+
+                // Fade it out after 2 seconds
+                setTimeout(() => {
+                    targetCell.classList.remove('active');
+                }, 1000);
+            }
         });
     </script>
 </body>
