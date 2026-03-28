@@ -19,7 +19,7 @@
   },
 
   "about": {
-    "description": "I am a pre-final year Mechanical Engineering student at IIITDM Jabalpur, specializing in robotics software and autonomous systems. My core strength lies in bridging the gap between physical hardware and intelligent software to build end-to-end robotic solutions.<br><br>I specialize in developing ROS2-based architectures for SLAM, navigation, and robotic manipulation. I frequently integrate custom computer vision pipelines and deploy them on edge computing devices to enable real-time perception and decision-making in the real world.<br><br>Most recently, during my internship at Vaayu Robotics, I built automated, scalable data pipelines to process massive datasets of high-resolution drone imagery, optimizing complex workflows for infrastructure inspection."
+    "description": "I am a pre-final year Mechanical Engineering student at IIITDM Jabalpur, specializing in robotics software and autonomous systems. My core strength lies in bridging the gap between physical hardware and intelligent software to build end-to-end robotic solutions.<br><br>I specialize in developing ROS2-based architectures for SLAM, navigation, and robotic manipulation. I integrate custom computer vision pipelines and deploy them on edge computing devices to enable real-time perception and decision-making in the real world.<br><br>I completed one internship during my internship at Vaayu Robotics, where I built automated, scalable data pipelines to process massive datasets of high-resolution drone imagery, optimizing complex workflows for infrastructure inspection."
   },
   
   "skills": [
